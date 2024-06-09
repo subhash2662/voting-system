@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+<title>Online voting system</title>
+<style>
+h1{
+	text-align:center;
+	color:tomato;
+}
+</style>
+<h1>ELECTION COMMISSION OF INDIA</h1>
+<h2 style="text-align:center";>ONLINE VOTING SYSTEM</h2>
+<center>
+<img src="images/ele.png" width="400px">
+</center>
+<center>
+	<form id="votingForm" action="2.html" method="GET">
+		<label for="adnum">AADHAR NUMBER</label><br>
+		<input type="text" id="adnum" number="adnum" required><br>
+		<label for="voterid">VOTER ID</label><br>
+		<input type="text" id="voterid" number="voterid" required><br>
+		<button type="submit">submit</button>
+	</form>
+
+</center>
+<script>
+	document.getElementById("votingForm").addEventListener("submit",function(event) {
+			var adnum=document.getElementById("adnum").value;
+			var voterid=document.getElementById("voterid").value;
+			if(!/^\d{12}$/.test(adnum)){
+			alert("Aadhar card number should contain 12 digits");
+			event.preventDefault();
+			}
+					});
+</script>
+

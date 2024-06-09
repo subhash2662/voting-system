@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<body>
+<title>CASTE YOUR VOTE</title>
+<style>
+h1{
+	text-align:center;
+	color:tomato;
+}
+label
+{
+ font-size:50px;
+}
+button
+{
+	font-size:25px;
+	background-color:green;
+	color:white;
+}
+</style>
+<h1>ELECTION COMMISSION OF INDIA</h1>
+<h2 style="text-align:center";>CASTE YOUR VOTE</h2>
+<center>
+<form id="subhash" action="3.html" method="GET">
+            <input type="checkbox" id="ysrcp" name="vote" value="YSRCP|images/jagan.jpg|images/fan.jpg">
+            <label for="ysrcp">Yuvajana Sramika Rythu Congress Party</label>
+            <center><img src="images/jagan.jpg" width="100px"><img src="images/fan.jpg" width="120px"></center><br>
+            
+            <input type="checkbox" id="janasena" name="vote" value="JANASENA|images/pspk.jpg|images/glass.png">
+            <label for="janasena">JANASENA PARTY</label>
+            <center><img src="images/pspk.jpg" width="80px"><img src="images/glass.png" width="120px"></center><br>
+            
+            <input type="checkbox" id="tdp" name="vote" value="TDP|images/ncbn.jpg|images/cycle.png">
+            <label for="tdp">TELUGU DESAM PARTY</label>
+            <center><img src="images/ncbn.jpg" width="100px"><img src="images/cycle.png" width="100px"></center><br>
+            
+            <button type="submit" id="submit-btn" class="disabled" disabled>Submit</button>
+        </form>
+	</center>
+ <script>
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const submitButton = document.getElementById('submit-btn');
+        const form = document.getElementById('subhash');
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                const checkedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+                if (checkedCheckboxes.length > 1) {
+                    alert('You can select only one checkbox.');
+                    checkbox.checked = false;
+                } else if (checkedCheckboxes.length === 1) {
+                    submitButton.disabled = false;
+                    submitButton.classList.remove('disabled');
+                } else {
+                    submitButton.disabled = true;
+                    submitButton.classList.add('disabled');
+                }
+            });
+        });
+
+        form.addEventListener('submit', (event) => {
+            const checkedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            if (checkedCheckboxes.length !== 1) {
+                event.preventDefault();
+                alert('Please select exactly one checkbox before submitting.');
+            }
+        });
+    </script>
+</body>
